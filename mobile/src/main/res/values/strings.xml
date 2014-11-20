@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="welcome">Welcome to Phone Status!</string>
+    <string name="description">This app can display useful snippets of information about your phone on your smartwatch in the form of persistent notifications.</string>
+
+    <string name="basic_info_title">Basic Info</string>
+    <string name="basic_info_text">Activate this notification to display basic information about your phone, e.g. battery life.</string>
+
+    <string name="recent_images_title">Recent images</string>
+    <string name="recent_images_text">Activate this notification to display recent images stored on your phone.</string>
+
+    <string name="card_overflow_on_connect">Show on connect</string>
+
+    <string name="show_notification">Show notification</string>
+    <string name="wearable_not_connected">Wearable not connected</string>
+
+    <!-- content descriptions -->
+    <string name="shown_notification_icon">Shown notification icon</string>
+    <string name="overflow_icon">Overflow icon</string>
+
+</resources>

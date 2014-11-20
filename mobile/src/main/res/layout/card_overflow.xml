@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/FlatButtonStyle"
+    android:layout_width="@dimen/overflow_width"
+    android:layout_height="@dimen/overflow_height"
+    android:src="@drawable/ic_more_vert_grey600_24dp"
+    android:scaleType="center"
+    android:contentDescription="@string/overflow_icon"
+    android:theme="@style/FlatButtonTheme"/>

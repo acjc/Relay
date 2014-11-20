@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+    <style name="CommonTheme" parent="BaseTheme">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/accent</item>
+
+        <item name="android:dropDownListViewStyle">@style/DropDownListViewStyle</item>
+    </style>
+
+    <style name="AppTheme" parent="CommonTheme">
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <style name="ActionBarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/icons</item>
+    </style>
+
+    <style name="DropDownListViewStyle" parent="Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:divider">@android:color/transparent</item>
+    </style>
+
+    <style name="RaisedButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingLeft">@dimen/button_padding</item>
+        <item name="android:paddingRight">@dimen/button_padding</item>
+        <item name="android:background">@drawable/raised_button</item>
+    </style>
+
+    <style name="FlatButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:background">@drawable/flat_button</item>
+    </style>
+
+    <!-- TextView styles -->
+
+    <style name="BaseTextStyle">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TitleStyle" parent="BaseTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_title</item>
+    </style>
+
+    <style name="ContentStyle" parent="BaseTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_normal</item>
+    </style>
+
+</resources>

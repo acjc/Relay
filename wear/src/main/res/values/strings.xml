@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="battery_percentage">%1$d%%</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="charged">Fully charged</string>
+    <string name="charging">Charging</string>
+    <string name="discharging">On battery</string>
+    <string name="low_battery">Low battery!</string>
+
+    <string name="limited">Limited</string>
+    <string name="wifi">Wifi</string>
+
+</resources>

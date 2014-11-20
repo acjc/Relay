@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="good_health">#FF4CAF50</color>
+    <color name="average_health">#FFCDDC39</color>
+    <color name="low_health">#FFFF5722</color>
+    <color name="charging">#FF00BCD4</color>
+
+</resources>

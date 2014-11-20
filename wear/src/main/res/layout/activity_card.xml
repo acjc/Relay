@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/status_glance_card"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PhoneStatusCard"
+    tools:deviceIds="wear">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/battery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_normal"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/card_padding"
+            android:paddingBottom="@dimen/card_padding"
+            android:drawablePadding="10dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/connectivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_normal"
+            android:singleLine="true"
+            android:fontFamily="sans-serif-condensed-light"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/card_padding"
+            android:drawablePadding="5dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/disconnected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/text_title"
+            android:textStyle="italic"
+            android:text="@string/disconnected"
+            android:fontFamily="sans-serif-condensed-light"
+            android:visibility="gone"/>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</android.support.wearable.view.BoxInsetLayout>

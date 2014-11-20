@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:visibility="invisible">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_watch_grey600_24dp"
+        android:contentDescription="@string/shown_notification_icon"/>
+
+</FrameLayout>

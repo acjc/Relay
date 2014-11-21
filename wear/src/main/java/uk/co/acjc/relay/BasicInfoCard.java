@@ -26,9 +26,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import uk.co.acjc.relay.common.MessageContract;
 
-public class PhoneStatusCard extends Activity implements DataApi.DataListener, NodeApi.NodeListener, GoogleApiClient.ConnectionCallbacks {
+public class BasicInfoCard extends Activity implements DataApi.DataListener, NodeApi.NodeListener, GoogleApiClient.ConnectionCallbacks {
 
-    private static final String TAG = PhoneStatusCard.class.getSimpleName();
+    private static final String TAG = BasicInfoCard.class.getSimpleName();
 
     @InjectView(R.id.disconnected) TextView mDisconnected;
     @InjectView(R.id.loading) View mLoading;
@@ -149,8 +149,8 @@ public class PhoneStatusCard extends Activity implements DataApi.DataListener, N
     @Override
     public void onConnected(Bundle connectionHint) {
         Log.d(TAG, "onConnected: " + connectionHint);
-        Wearable.NodeApi.addListener(mGoogleApiClient, PhoneStatusCard.this);
-        Wearable.DataApi.addListener(mGoogleApiClient, PhoneStatusCard.this);
+        Wearable.NodeApi.addListener(mGoogleApiClient, BasicInfoCard.this);
+        Wearable.DataApi.addListener(mGoogleApiClient, BasicInfoCard.this);
         requestStatusUpdates();
     }
 
@@ -172,7 +172,7 @@ public class PhoneStatusCard extends Activity implements DataApi.DataListener, N
                 }
 
                 for (Node node : nodes) {
-                    MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), MessageContract.REQUEST_PHONE_STATUS_PATH, null).await();
+                    MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), MessageContract.REQUEST_BASIC_INFO_PATH, null).await();
                     if (!result.getStatus().isSuccess()) {
                         Log.e(TAG, "failed to send Message: " + result.getStatus());
                     }
@@ -192,13 +192,13 @@ public class PhoneStatusCard extends Activity implements DataApi.DataListener, N
             @Override
             public void run() {
                 for (Node node : getNodes()) {
-                    MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), MessageContract.STOP_PHONE_STATUS_PATH, null).await();
+                    MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), MessageContract.STOP_BASIC_INFO_PATH, null).await();
                     if (!result.getStatus().isSuccess()) {
                         Log.e(TAG, "failed to send Message: " + result.getStatus());
                     }
                 }
-                Wearable.DataApi.removeListener(mGoogleApiClient, PhoneStatusCard.this);
-                Wearable.NodeApi.removeListener(mGoogleApiClient, PhoneStatusCard.this);
+                Wearable.DataApi.removeListener(mGoogleApiClient, BasicInfoCard.this);
+                Wearable.NodeApi.removeListener(mGoogleApiClient, BasicInfoCard.this);
                 mGoogleApiClient.disconnect();
             }
         }).start();

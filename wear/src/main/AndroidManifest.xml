@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault.Light" >
         <activity
-            android:name="uk.co.acjc.relay.PhoneStatusCard"
+            android:name=".BasicInfoCard"
             android:label="@string/app_name"
             android:exported="true"
             android:allowEmbedded="true"
@@ -23,7 +23,7 @@
         </activity>
 
         <service
-            android:name="uk.co.acjc.relay.StartActivityService" >
+            android:name=".BasicInfoReceiver" >
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
             </intent-filter>

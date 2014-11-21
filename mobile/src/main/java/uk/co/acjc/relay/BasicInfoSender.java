@@ -34,9 +34,9 @@ import com.google.android.gms.wearable.WearableListenerService;
 import uk.co.acjc.relay.common.LogUtil;
 import uk.co.acjc.relay.common.MessageContract;
 
-public class PhoneStatusService extends WearableListenerService {
+public class BasicInfoSender extends WearableListenerService {
 
-    private static final String TAG = PhoneStatusService.class.getSimpleName();
+    private static final String TAG = BasicInfoSender.class.getSimpleName();
 
     public static final String PREF_BASIC_INFO_ON_CONNECT = "uk.uk.co.acjc.phonestatus.PREF_BASIC_INFO_ON_CONNECT";
     public static final String PREF_RECENT_IMAGES_ON_CONNECT = "uk.uk.co.acjc.phonestatus.PREF_RECENT_IMAGES_ON_CONNECT";
@@ -76,7 +76,7 @@ public class PhoneStatusService extends WearableListenerService {
         Log.d(TAG, "message received: " + path);
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         switch (path) {
-            case MessageContract.REQUEST_PHONE_STATUS_PATH:
+            case MessageContract.REQUEST_BASIC_INFO_PATH:
                 if (!mReceiversRegistered) {
                     enableConnectivityReceiver();
 
@@ -91,7 +91,7 @@ public class PhoneStatusService extends WearableListenerService {
                     mReceiversRegistered = true;
                 }
                 break;
-            case MessageContract.STOP_PHONE_STATUS_PATH:
+            case MessageContract.STOP_BASIC_INFO_PATH:
                 if (mReceiversRegistered) {
                     disableConnectivityReceiver();
 
@@ -220,7 +220,7 @@ public class PhoneStatusService extends WearableListenerService {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    sendConnectivityStatus(PhoneStatusService.this, mGoogleApiClient);
+                    sendConnectivityStatus(BasicInfoSender.this, mGoogleApiClient);
                 }
             }).start();
         }

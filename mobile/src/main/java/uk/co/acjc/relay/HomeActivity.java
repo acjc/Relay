@@ -142,12 +142,12 @@ public class HomeActivity extends ActionBarActivity {
 
         @OnClick(R.id.basic_info_overflow)
         void onBasicInfoOverflowClick(View v) {
-            showCardOverflowPopup(v, PhoneStatusService.PREF_BASIC_INFO_ON_CONNECT);
+            showCardOverflowPopup(v, BasicInfoSender.PREF_BASIC_INFO_ON_CONNECT);
         }
 
         @OnClick(R.id.recent_images_overflow)
         void onRecentImagesOverflowClick(View v) {
-            showCardOverflowPopup(v, PhoneStatusService.PREF_RECENT_IMAGES_ON_CONNECT);
+            showCardOverflowPopup(v, BasicInfoSender.PREF_RECENT_IMAGES_ON_CONNECT);
         }
 
         private void showCardOverflowPopup(View root, final String prefKey) {

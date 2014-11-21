@@ -16,9 +16,9 @@ import com.google.android.gms.wearable.WearableListenerService;
 
 import uk.co.acjc.relay.common.MessageContract;
 
-public class StartActivityService extends WearableListenerService {
+public class BasicInfoReceiver extends WearableListenerService {
 
-    private static final String TAG = StartActivityService.class.getSimpleName();
+    private static final String TAG = BasicInfoReceiver.class.getSimpleName();
 
     private static final int PHONE_STATUS_NOTIFICATION_ID = 1;
 
@@ -52,7 +52,7 @@ public class StartActivityService extends WearableListenerService {
     }
 
     public static void updateNotification(Context context, @StringRes int contentId, @DrawableRes int backgroundId, int priority) {
-        Intent notificationIntent = new Intent(context, PhoneStatusCard.class);
+        Intent notificationIntent = new Intent(context, BasicInfoCard.class);
         PendingIntent notificationPendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder notification = new NotificationCompat.Builder(context)

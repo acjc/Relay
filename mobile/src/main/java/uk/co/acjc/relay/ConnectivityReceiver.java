@@ -36,7 +36,7 @@ public class ConnectivityReceiver extends BroadcastReceiver {
                     }
                 }
 
-                PhoneStatusService.sendConnectivityStatus(context, mGoogleApiClient);
+                BasicInfoSender.sendConnectivityStatus(context, mGoogleApiClient);
                 mGoogleApiClient.disconnect();
             }
         }).start();

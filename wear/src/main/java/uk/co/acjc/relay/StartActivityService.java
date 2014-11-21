@@ -1,4 +1,4 @@
-package com.acjc.phonestatus;
+package uk.co.acjc.relay;
 
 import android.app.PendingIntent;
 import android.content.Context;
@@ -14,7 +14,7 @@ import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.WearableListenerService;
 
-import uk.co.acjc.phonestatus.common.MessageContract;
+import uk.co.acjc.relay.common.MessageContract;
 
 public class StartActivityService extends WearableListenerService {
 

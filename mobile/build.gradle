@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.1"
 
     defaultConfig {
-        applicationId "com.acjc.phonestatus"
+        applicationId "uk.co.acjc.relay"
         minSdkVersion 18
         targetSdkVersion 21
         versionCode 1

@@ -1,4 +1,4 @@
-package com.acjc.phonestatus;
+package uk.co.acjc.relay;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
@@ -24,7 +24,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import uk.co.acjc.phonestatus.common.MessageContract;
+import uk.co.acjc.relay.common.MessageContract;
 
 public class PhoneStatusCard extends Activity implements DataApi.DataListener, NodeApi.NodeListener, GoogleApiClient.ConnectionCallbacks {
 

@@ -1,4 +1,4 @@
-package com.acjc.phonestatus;
+package uk.co.acjc.relay;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -31,15 +31,15 @@ import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 
-import uk.co.acjc.phonestatus.common.LogUtil;
-import uk.co.acjc.phonestatus.common.MessageContract;
+import uk.co.acjc.relay.common.LogUtil;
+import uk.co.acjc.relay.common.MessageContract;
 
 public class PhoneStatusService extends WearableListenerService {
 
     private static final String TAG = PhoneStatusService.class.getSimpleName();
 
-    public static final String PREF_BASIC_INFO_ON_CONNECT = "uk.co.acjc.phonestatus.PREF_BASIC_INFO_ON_CONNECT";
-    public static final String PREF_RECENT_IMAGES_ON_CONNECT = "uk.co.acjc.phonestatus.PREF_RECENT_IMAGES_ON_CONNECT";
+    public static final String PREF_BASIC_INFO_ON_CONNECT = "uk.uk.co.acjc.phonestatus.PREF_BASIC_INFO_ON_CONNECT";
+    public static final String PREF_RECENT_IMAGES_ON_CONNECT = "uk.uk.co.acjc.phonestatus.PREF_RECENT_IMAGES_ON_CONNECT";
     private static final int LIMITED_CONNECTION = -1;
 
     private SharedPreferences mPreferences;

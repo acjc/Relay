@@ -1,4 +1,4 @@
-package com.acjc.phonestatus;
+package uk.co.acjc.relay;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -29,7 +29,7 @@ import com.google.android.gms.wearable.Wearable;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import uk.co.acjc.phonestatus.common.LogUtil;
+import uk.co.acjc.relay.common.LogUtil;
 
 public class HomeActivity extends ActionBarActivity {
 

@@ -1,6 +1,8 @@
-package uk.co.acjc.phonestatus.common;
+package uk.co.acjc.relay.common;
 
 import android.util.Log;
+
+import uk.co.acjc.phonestatus.common.BuildConfig;
 
 public class LogUtil {
 

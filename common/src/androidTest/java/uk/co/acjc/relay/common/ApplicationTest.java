@@ -1,4 +1,4 @@
-package com.acjc.phonestatus;
+package uk.co.acjc.relay.common;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

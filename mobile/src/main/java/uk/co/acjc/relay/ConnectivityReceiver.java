@@ -1,4 +1,4 @@
-package com.acjc.phonestatus;
+package uk.co.acjc.relay;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,7 +10,7 @@ import com.google.android.gms.wearable.Wearable;
 
 import java.util.concurrent.TimeUnit;
 
-import uk.co.acjc.phonestatus.common.LogUtil;
+import uk.co.acjc.relay.common.LogUtil;
 
 public class ConnectivityReceiver extends BroadcastReceiver {
 

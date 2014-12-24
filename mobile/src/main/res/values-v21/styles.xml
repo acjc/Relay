@@ -25,6 +25,7 @@
     </style>
 
     <style name="FlatButtonStyle" parent="android:Widget.Material.Button.Borderless">
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
     </style>
 
     <style name="FlatButtonTheme" parent="android:ThemeOverlay.Material">

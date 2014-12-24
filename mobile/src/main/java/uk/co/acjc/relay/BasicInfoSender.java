@@ -44,17 +44,15 @@ public class BasicInfoSender extends WearableListenerService {
 
     private SharedPreferences mPreferences;
     private BatteryLevelReceiver mBatteryLevelReceiver;
-    private GoogleApiClient mGoogleApiClient;
+    private GoogleApiClient mClient;
     private final PhoneStateListener mSignalStrengthListener = new CustomPhoneStateListener();
     private boolean mReceiversRegistered = false;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Wearable.API)
-                .build();
-        mGoogleApiClient.connect();
+        mClient = HomeActivity.getClient(this);
+        mClient.connect();
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
@@ -62,10 +60,13 @@ public class BasicInfoSender extends WearableListenerService {
     public void onDestroy() {
         if (mReceiversRegistered) {
             unregisterReceiver(mBatteryLevelReceiver);
+            TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+            tm.listen(mSignalStrengthListener, PhoneStateListener.LISTEN_NONE);
+            disableConnectivityReceiver();
             mReceiversRegistered = false;
         }
-        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
+        if (mClient != null && mClient.isConnected()) {
+            mClient.disconnect();
         }
         super.onDestroy();
     }
@@ -86,7 +87,7 @@ public class BasicInfoSender extends WearableListenerService {
                     mBatteryLevelReceiver = new BatteryLevelReceiver();
                     registerReceiver(mBatteryLevelReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
-                    sendConnectivityStatus(this, mGoogleApiClient);
+                    sendConnectivityStatus(this, mClient);
 
                     mReceiversRegistered = true;
                 }
@@ -180,7 +181,7 @@ public class BasicInfoSender extends WearableListenerService {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (mGoogleApiClient == null || !mGoogleApiClient.isConnected()) {
+            if (mClient == null || !mClient.isConnected()) {
                 LogUtil.e(TAG, "GoogleApiClient was not connected");
                 return;
             }
@@ -198,14 +199,14 @@ public class BasicInfoSender extends WearableListenerService {
             dataMap.getDataMap().putInt(MessageContract.BatteryInfo.BATTERY_LEVEL_KEY, batteryLevel);
             dataMap.getDataMap().putBoolean(MessageContract.BatteryInfo.BATTERY_CHARGING_KEY, isCharging);
             PutDataRequest request = dataMap.asPutDataRequest();
-            Wearable.DataApi.putDataItem(mGoogleApiClient, request);
+            Wearable.DataApi.putDataItem(mClient, request);
         }
     }
 
     @Override
     public void onPeerConnected(Node peer) {
         if (mPreferences.getBoolean(PREF_BASIC_INFO_ON_CONNECT, true)) {
-            HomeActivity.showBasicInfoNotification(this, mGoogleApiClient);
+            HomeActivity.showBasicInfoNotification(this, mClient);
         }
         if (mPreferences.getBoolean(PREF_RECENT_IMAGES_ON_CONNECT, true)) {
             // show recent images notification
@@ -220,7 +221,7 @@ public class BasicInfoSender extends WearableListenerService {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    sendConnectivityStatus(BasicInfoSender.this, mGoogleApiClient);
+                    sendConnectivityStatus(BasicInfoSender.this, mClient);
                 }
             }).start();
         }

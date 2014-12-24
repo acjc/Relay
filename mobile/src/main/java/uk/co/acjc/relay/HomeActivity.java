@@ -23,8 +23,14 @@ import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.wearable.Node;
+import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
+
+import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -39,6 +45,26 @@ public class HomeActivity extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+    }
+
+    public static GoogleApiClient getClient(Context context) {
+        return new GoogleApiClient.Builder(context)
+                .addApi(Wearable.API)
+                .build();
+    }
+
+    public static boolean blockingConnect(GoogleApiClient client) {
+        ConnectionResult connectionResult = client.blockingConnect(30, TimeUnit.SECONDS);
+        if (!connectionResult.isSuccess()) {
+            LogUtil.e(TAG, "failed to connect to GoogleApiClient");
+            return false;
+        }
+        return true;
+    }
+
+    public static Collection<Node> getNodes(GoogleApiClient client) {
+        NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(client).await();
+        return nodes.getNodes();
     }
 
     public static void showBasicInfoNotification(final Context context, final GoogleApiClient googleApiClient) {
